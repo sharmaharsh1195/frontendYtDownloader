@@ -56,7 +56,7 @@ import Footer from '../Footer/Footer';
         };
     return (
         <div>
-            <header>
+            <header className="header-content">
                 <h1>Download YouTube Videos And Playlists</h1>
             </header>
             <div className="search-container">
