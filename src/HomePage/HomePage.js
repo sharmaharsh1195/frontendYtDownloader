@@ -13,7 +13,7 @@ import Footer from '../Footer/Footer';
             const url = document.getElementById("search-bar").value;
         
             try {
-                const response = await fetch('http://127.0.0.1:5000/downloadVideo', {
+                const response = await fetch('https://web-production-4f6f.up.railway.app/downloadVideo', { // Updated with your Railway.app URL
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
