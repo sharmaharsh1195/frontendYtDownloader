@@ -14,8 +14,8 @@ import Footer from '../Footer/Footer';
             const url = document.getElementById("search-bar").value;
         
             try {
-                const response = await fetch('https://web-production-4f6f.up.railway.app/downloadVideo', { // Updated with your Railway.app URL
-                    // const response = await fetch('http://127.0.0.1:5000/downloadVideo', { 
+                // const response = await fetch('https://web-production-4f6f.up.railway.app/downloadVideo', { // Updated with your Railway.app URL
+                    const response = await fetch('http://127.0.0.1:5000/downloadVideo', { 
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -66,8 +66,7 @@ import Footer from '../Footer/Footer';
             const url = document.getElementById("search-bar").value;
         
             try {
-                const response = await fetch('https://web-production-4f6f.up.railway.app/downloadMp3', {
-                // const response=await fetch('http://127.0.0.1:5000/downloadMp3', {
+                const response = await fetch('http://127.0.0.1:5000/downloadMp3', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -76,20 +75,7 @@ import Footer from '../Footer/Footer';
                 });
         
                 if (response.ok) {
-                    const reader = response.body.getReader();
-                    const contentLength = +response.headers.get('Content-Length');
-                    let receivedLength = 0;
-                    const chunks = [];
-        
-                    while(true) {
-                        const {done, value} = await reader.read();
-                        if (done) break;
-                        chunks.push(value);
-                        receivedLength += value.length;
-                        setDownloadProgress(Math.round((receivedLength / contentLength) * 100));
-                    }
-        
-                    const blob = new Blob(chunks, {type: 'audio/mpeg'});
+                    const blob = await response.blob();
                     const downloadUrl = window.URL.createObjectURL(blob);
                     const link = document.createElement('a');
                     link.href = downloadUrl;
@@ -121,10 +107,11 @@ import Footer from '../Footer/Footer';
                 setDownloadProgress(0);
             }
         };
+        
     return (
         <div>
             <header className="header-content">
-                <h1>Download YouTube Videos And Playlists</h1>
+                <h1>Downloads YouTube Videos And Playlists</h1>
             </header>
             <div className="search-container">
                 <input type="text" id="search-bar" placeholder="Paste YouTube video or playlist URL here..."/>
