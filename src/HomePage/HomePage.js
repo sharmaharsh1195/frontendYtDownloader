@@ -14,8 +14,8 @@ import Footer from '../Footer/Footer';
             const url = document.getElementById("search-bar").value;
         
             try {
-                // const response = await fetch('https://web-production-4f6f.up.railway.app/downloadVideo', { // Updated with your Railway.app URL
-                    const response = await fetch('http://127.0.0.1:5000/downloadVideo', { 
+                const response = await fetch('https://web-production-4f6f.up.railway.app/downloadVideo', { // Updated with your Railway.app URL
+                    // const response = await fetch('http://127.0.0.1:5000/downloadVideo', { 
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ import Footer from '../Footer/Footer';
             const url = document.getElementById("search-bar").value;
         
             try {
-                const response = await fetch('http://127.0.0.1:5000/downloadMp3', {
+                const response = await fetch('https://web-production-4f6f.up.railway.app/downloadMp3', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ import Footer from '../Footer/Footer';
     return (
         <div>
             <header className="header-content">
-                <h1>Downloads YouTube Videos And Playlists</h1>
+                <h1>Download YouTube Videos And Mp3</h1>
             </header>
             <div className="search-container">
                 <input type="text" id="search-bar" placeholder="Paste YouTube video or playlist URL here..."/>
